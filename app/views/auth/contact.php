@@ -1,8 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<script> UIkit.notification(options);</script>
 <section class="uk-section uk-section-default">
     <div class="trailer__container">
         <div class="uk-card uk-card-default uk-card-hover">
             <div class="card-header">
+                <div class="uk-card-media-top uk-text-center"><img src="<?php echo URLROOT; ?>/img/logo.png" alt=""></div>
                 <h3 class="trailer__heading">Thanks for taking out time to reach out, What can do for you?</h3>
 
                 <div class="card-body">
@@ -43,4 +45,5 @@
         </div>
     </div>
 </section>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

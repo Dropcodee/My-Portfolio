@@ -13,7 +13,8 @@
             <div class="img__wrapper">
                 <img src="<?php echo URLROOT?>/img/avatar.jpg" alt="">
             </div>
-            <div class="img__footer">
+            <div class="img__footer" style="
+    margin-bottom: 0">
                 <img src="<?php echo URLROOT?>/img/hero.png" alt="">
             </div>
         </div>

@@ -1,7 +1,14 @@
 <?php 
 class Auth  extends Controller {
     public function __construct() {
+        
+    }
+    public function failed() {
+        $this->view("auth/failed");
+    }
 
+    public function success() {
+        $this->view("auth/success");
     }
     public function contact() {
 
@@ -15,6 +22,9 @@ class Auth  extends Controller {
                 'name' => trim($_POST['name']),
                 'email' => trim($_POST['email']),
                 'message' => trim($_POST['message']),
+                'companyName' => "DropCode Web Solutions",
+                'companyMail' => "dropcodetuts@gmail.com",
+                'subject' => "New Client's Message",
                 'name__error' => "",
                 'email__error' => "",
                 'message__error' => ""
@@ -40,7 +50,25 @@ class Auth  extends Controller {
             if(empty($data['name__error']) && empty($data['email__error']) && empty($data['message__error'])) {
                 // after validation 
 
-                die("SUCCESSFULLY MAILED ME");
+                //sendgrid email data
+                $userMail = $data['email'];
+                $headers = array(
+                    "From" => $userMail,
+                    "Reply-to" => $userMail,
+                    'X-Mailer' => 'PHP/' . phpversion()
+                );
+                $msg = $data['message'];
+                $toMail =  $data['companyMail'];
+                $subject =  $data['subject'];
+                $message = wordwrap($msg,60);
+                $result = mail($toMail, $subject, $message, $headers);
+                if($result) {
+                    $this->view('auth/success', $data);
+                }  else {
+                     
+                    $this->view('auth/failed', $data);
+                }
+                
             } else {
                 $this->view('auth/contact', $data);
             }
