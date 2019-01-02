@@ -1,0 +1,10 @@
+{
+    "name": "dropcode/app",
+    "authors": [
+        {
+            "name": "Joshua-owolabi",
+            "email": "primtech.co@gmail.com"
+        }
+    ],
+    "require": {}
+}

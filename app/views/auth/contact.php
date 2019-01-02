@@ -1,5 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<script> UIkit.notification(options);</script>
+<?php require APPROOT . '/views/inc/header.php';  print_r($result);?>
 <section class="uk-section uk-section-default">
     <div class="trailer__container">
         <div class="uk-card uk-card-default uk-card-hover">

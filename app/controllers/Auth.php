@@ -50,23 +50,25 @@ class Auth  extends Controller {
             if(empty($data['name__error']) && empty($data['email__error']) && empty($data['message__error'])) {
                 // after validation 
 
-                //sendgrid email data
+                // email data
                 $userMail = $data['email'];
                 $headers = array(
                     "From" => $userMail,
                     "Reply-to" => $userMail,
                     'X-Mailer' => 'PHP/' . phpversion()
                 );
-                $msg = $data['message'];
+                $msg = $data['message'] . $userMail;
                 $toMail =  $data['companyMail'];
                 $subject =  $data['subject'];
                 $message = wordwrap($msg,60);
-                $result = mail($toMail, $subject, $message, $headers);
+                $result[] = mail($toMail, $subject, $message, $headers);         
                 if($result) {
                     $this->view('auth/success', $data);
+                     print_r($result);
                 }  else {
-                     
+                    echo $result;
                     $this->view('auth/failed', $data);
+                     print_r($result);
                 }
                 
             } else {
